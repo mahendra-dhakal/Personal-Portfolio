@@ -16,12 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from blog.views import blog_list, blog_detail
-from django.views.generic import TemplateView
+from blog.views import blog_list, blog_detail, home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name='index.html'), name='index'),  #templateView is a generic class-based view that renders a template without needing to define a separate view function. It is useful for static pages.
+    path('', home, name='index'),  # Use the new home view
     path('blog/', blog_list, name='blog-list'),
     path('blog/<int:post_id>/', blog_detail, name='blog_detail'),
 ]

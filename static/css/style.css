@@ -46,7 +46,7 @@ body::before {
 header {
     background: linear-gradient(90deg, #181c26 0%, #232526 60%, #e2b714 100%);
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
-    border-bottom: 2px solid #e2b714;
+    border-bottom: 2px solid red;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -195,6 +195,30 @@ footer {
     color: #b8b8b8;
     font-size: 0.9rem;
     margin-top: 1rem;
+}
+
+/* Add scroll offset for anchor targets so headings are visible below sticky header */
+section.card,
+section.showcase {
+    scroll-margin-top: 160px;
+    /* Try 150px, 160px, or higher if needed */
+}
+
+section {
+    scroll-margin-top: 160px;
+}
+
+/* Read More Link Styles */
+.read-more-link {
+    color: #e2b714;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.read-more-link:hover {
+    color: #61dafb;
+    text-decoration: underline;
 }
 
 /* Responsive Styles */

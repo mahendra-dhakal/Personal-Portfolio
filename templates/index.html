@@ -17,8 +17,8 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#recent-blogs">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="{% url 'blog-list' %}">Blog</a></li>
             </ul>
             <div class="menu-toggle" id="mobile-menu">&#9776;</div>
         </nav>
@@ -89,6 +89,26 @@
                     </li>
                 </ul>
             </div>
+        </section>
+        <section id="recent-blogs" class="card">
+            <h2>Blog Posts</h2>
+            {% if recent_posts %}
+            {% for post in recent_posts %}
+            <div class="project">
+                <h3>
+                    <a href="{% url 'blog_detail' post.id %}">{{ post.title }}</a>
+                </h3>
+                <p>
+                    <em>Published on {{ post.created_on|date:"F d, Y" }} by {{ post.author }}</em>
+                </p>
+                <p>{{ post.content|truncatewords:30 }}</p>
+                <a href="{% url 'blog_detail' post.id %}" class="read-more-link">Read More</a>
+            </div>
+            {% endfor %}
+            <a href="{% url 'blog-list' %}" class="btn" style="color:#e2b714;">View All Blog Posts</a>
+            {% else %}
+            <p>No blog posts yet.</p>
+            {% endif %}
         </section>
     </main>
     <footer id="contact">
