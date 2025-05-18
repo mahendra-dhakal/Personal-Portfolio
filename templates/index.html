@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahendra Dhakal Portfolio</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Mahendra Dhakal</div>
+            <ul class="nav-links">
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="{% url 'blog-list' %}">Blog</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+        </nav>
+    </header>
+    <main>
+        <section class="showcase">
+            <h1>Hello, I'm Mahendra Dhakal</h1>
+            <p>
+                I am a passionate learner and problem-solver with a Bachelor's degree in Civil Engineering. My curiosity
+                for technology and innovation has led me to transition into the computer field, where I am actively
+                building expertise in software development and web technologies.
+            </p>
+            <p>
+                I thrive on challenges and enjoy turning ideas into reality through code. My journey so far includes
+                hands-on experience with Python, Django, and modern web development tools. I am committed to continuous
+                growth and excited to contribute to impactful projects.
+            </p>
+            <p>
+                Based in Kathmandu, Akantakuna, I am eager to collaborate with forward-thinking teams and make a
+                meaningful difference in the tech world.
+            </p>
+        </section>
+        <section id="education" class="card">
+            <h2>Education</h2>
+            <ul>
+                <li>Bachelor in Civil Engineering</li>
+            </ul>
+        </section>
+        <section id="skills" class="card">
+            <h2>Skills</h2>
+            <div class="skills-list">
+                <div>
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li>Proficient in Python, HTML, and CSS</li>
+                        <li>Experienced with C and C++</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Frameworks</h3>
+                    <ul>
+                        <li>Skilled in Django for web application development</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Other Skills</h3>
+                    <ul>
+                        <li>Version control with Git and GitHub</li>
+                        <li>Database management using PostgreSQL</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="projects" class="card">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>
+                    <a href="https://github.com/mahendra-dhakal/Notes" target="_blank"
+                        style="color:#61dafb;text-decoration:none;display:flex;align-items:center;gap:8px;">
+                        Notes App
+                        <span title="View Project" style="font-size:1.2em;">🔗</span>
+                    </a>
+                </h3>
+                <ul>
+                    <li>Built a web application using Django, PostgreSQL, HTML/CSS, and Bootstrap.</li>
+                    <li>Implemented user authentication, CRUD operations, and responsive design.</li>
+                    <li><strong>Features:</strong> Sign up, Sign in, Create/Edit/Delete notes, and secure user accounts.
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer id="contact">
+        <div class="footer-content">
+            <h2>Contact Details</h2>
+            <p><strong>Name:</strong> Mahendra Dhakal</p>
+            <p><strong>Contact No.:</strong> +977-9806714549</p>
+            <p><strong>Email:</strong> <a href="mailto:mahendradhakal700@gmail.com">mahendradhakal700@gmail.com</a>
+            </p>
+            <p><strong>Address:</strong> Kathmandu, Akantakuna</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/mahendra-dhakal-42b67a327?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                    target="_blank">LinkedIn</a>
+                <a href="https://github.com/mahendra-dhakal" target="_blank">GitHub</a>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2025 Mahendra Dhakal</p>
+    </footer>
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

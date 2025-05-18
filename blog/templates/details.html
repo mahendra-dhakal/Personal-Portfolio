@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }} - Mahendra Dhakal</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Mahendra Dhakal</div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'index' %}#education">Education</a></li>
+                <li><a href="{% url 'index' %}#skills">Skills</a></li>
+                <li><a href="{% url 'index' %}#projects">Projects</a></li>
+                <li><a href="{% url 'index' %}#contact">Contact</a></li>
+                <li><a href="{% url 'blog-list' %}">Blog</a></li>
+            </ul>
+            <div class="menu-toggle">☰</div>
+        </nav>
+    </header>
+    <section class="card">
+        <h2>{{ post.title }}</h2>
+        <p>Published on {{ post.created_on|date:"F d, Y" }} by {{ post.author }}</p>
+        <div>{{ post.content|linebreaks }}</div>
+        <a href="{% url 'blog-list' %}">Back to Blog</a>
+    </section>
+    <footer>
+        <div class="footer-content">
+            <h2>Contact Details</h2>
+            <p>Name: Mahendra Dhakal</p>
+            <p>Contact No.: +977-9806714549</p>
+            <p>Email: <a href="mailto:mahendradhakal700@gmail.com">mahendradhakal700@gmail.com</a></p>
+            <p>Address: Kathmandu, Akantakuna</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/mahendra-dhakal-42b67a327" target="_blank">LinkedIn</a>
+                <a href="https://github.com/mahendra-dhakal" target="_blank">GitHub</a>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2025 Mahendra Dhakal
+        </div>
+    </footer>
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>
