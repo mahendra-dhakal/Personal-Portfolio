@@ -1,157 +1,762 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahendra Dhakal Portfolio</title>
-    {% load static %}
+    <title>Mahendra Dhakal - Future-Ready Developer</title>
+    <meta name="description" content="Mahendra Dhakal - Civil Engineer turned innovative developer. Crafting the future with Python, Django, and cutting-edge web technologies.">
+    <meta name="keywords" content="Mahendra Dhakal, Developer, Python, Django, Civil Engineering, Web Development, Portfolio">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="{% static 'css/style.css' %}" as="style">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mahendra Dhakal - Future-Ready Developer">
+    <meta property="og:description" content="Civil Engineer turned innovative developer. Crafting the future with Python, Django, and cutting-edge web technologies.">
+    
+    <!-- Accessibility improvements -->
+    <meta name="theme-color" content="#00ffff">
+    
+    <!-- Performance hints -->
+    <link rel="dns-prefetch" href="//github.com">
+    <link rel="dns-prefetch" href="//linkedin.com">
 </head>
-
 <body>
-    <div class="blob-bg">
-        <div class="blob blob1"></div>
-        <div class="blob blob2"></div>
-        <div class="blob blob3"></div>
-    </div>
-    <header>
-        <nav class="navbar">
-            <div class="logo">Mahendra Dhakal</div>
-            <ul class="nav-links">
-                <li><a href="#education">Education</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#recent-blogs">Blog</a></li>
-                <li><a href="#contact">Contact</a></li>
+    <!-- Custom Cursor -->
+    <div class="cursor" aria-hidden="true"></div>
+    
+    <!-- Dynamic Background System -->
+    <div class="bg-canvas" aria-hidden="true"></div>
+    <div class="bg-gradient" aria-hidden="true"></div>
+    <div class="particles" aria-hidden="true" id="particles-js"></div>
+
+    <!-- Glassmorphism Navigation -->
+    <div class="nav-container">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="logo" role="img" aria-label="Mahendra Dhakal Logo">
+                Mahendra Dhakal
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#blog" class="nav-link">Blog</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+            <div class="menu-toggle" id="mobile-menu" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
-    </header>
-    <main>
-        <section class="showcase">
-            <h1 class="spin-intro">
-                <span class="spin-word">Hello,</span>
-                <span class="spin-word">I'm</span>
-                <span class="spin-word">Mahendra</span>
-                <span class="spin-word">Dhakal</span>
+    </div>
+
+    <!-- Immersive Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title" id="hero-title">
+                MAHENDRA<br>DHAKAL
             </h1>
-            <p>
-                I am a passionate learner and problem-solver with a Bachelor's degree in Civil Engineering. My curiosity
-                for technology and innovation has led me to transition into the computer field, where I am actively
-                building expertise in software development and web technologies.
+            <p class="hero-subtitle" id="typewriter">
+                Civil Engineer → Future Developer
             </p>
-            <p>
-                I thrive on challenges and enjoy turning ideas into reality through code. My journey so far includes
-                hands-on experience with Python, Django, and modern web development tools. I am committed to continuous
-                growth and excited to contribute to impactful projects.
-            </p>
-            <p>
-                Based in Kathmandu, Akantakuna, I am eager to collaborate with forward-thinking teams and make a
-                meaningful difference in the tech world.
-            </p>
-        </section>
-        <section id="education" class="card">
-            <h2>Education</h2>
-            <ul>
-                <li>Bachelor in Civil Engineering</li>
-            </ul>
-        </section>
-        <section id="skills" class="card">
-            <h2>Skills</h2>
-            <div class="skills-list">
-                <div>
-                    <h3>Programming Languages</h3>
-                    <ul>
-                        <li>Proficient in Python, HTML, and CSS</li>
-                        <li>Experienced with C and C++</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Frameworks</h3>
-                    <ul>
-                        <li>Skilled in Django for web application development</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Other Skills</h3>
-                    <ul>
-                        <li>Version control with Git and GitHub</li>
-                        <li>Database management using PostgreSQL</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        <section id="projects" class="card">
-            <h2>Projects</h2>
-            <div class="project">
-                <h3>
-                    <a href="https://github.com/mahendra-dhakal/Notes" target="_blank"
-                        style="color:#61dafb;text-decoration:none;display:flex;align-items:center;gap:8px;">
-                        Notes App
-                        <span title="View Project" style="font-size:1.2em;">🔗</span>
-                    </a>
-                </h3>
-                <ul>
-                    <li>Built a web application using Django, PostgreSQL, HTML/CSS, and Bootstrap.</li>
-                    <li>Implemented user authentication, CRUD operations, and responsive design.</li>
-                    <li><strong>Features:</strong> Sign up, Sign in, Create/Edit/Delete notes, and secure user accounts.
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <section id="recent-blogs" class="card">
-            <h2>Blog Posts</h2>
-            {% if recent_posts %}
-            {% for post in recent_posts %}
-            <div class="project">
-                <h3>
-                    <a href="{% url 'blog_detail' post.id %}">{{ post.title }}</a>
-                </h3>
+            <div class="hero-description">
                 <p>
-                    <em>Published on {{ post.created_on|date:"F d, Y" }} by {{ post.author }}</em>
+                    Bridging the gap between structural engineering and software innovation. 
+                    I transform complex problems into elegant digital solutions using 
+                    cutting-edge technologies and creative thinking.
                 </p>
-                <p>{{ post.content|truncatewords:30 }}</p>
-                <a href="{% url 'blog_detail' post.id %}" class="read-more-link">Read More</a>
             </div>
-            {% endfor %}
-            <a href="{% url 'blog-list' %}" class="btn" style="color:#e2b714;">View All Blog Posts</a>
-            {% else %}
-            <p>No blog posts yet.</p>
-            {% endif %}
-        </section>
-    </main>
-    <footer id="contact">
-        <div class="footer-content">
-            <h2>Contact Details</h2>
-            <div class="footer-contact-row">
-                <div>
-                    <p><strong>Name:</strong> Mahendra Dhakal</p>
-                    <p><strong>Contact No.:</strong> +977-9806714549</p>
+            <a href="#projects" class="cta-button">
+                <span>Explore My Work</span>
+                <span>→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">🎓 Background</h3>
+                    <p class="card-subtitle">Civil Engineer with a Passion for Code</p>
                 </div>
-                <div>
-                    <p><strong>Email:</strong> <a
-                            href="mailto:mahendradhakal700@gmail.com">mahendradhakal700@gmail.com</a>
+                <div class="card-content">
+                    <p>
+                        With a Bachelor's degree in Civil Engineering, I bring a unique perspective to software development. 
+                        My engineering background provides me with strong problem-solving skills, attention to detail, 
+                        and the ability to think systematically about complex challenges.
                     </p>
-                    <p><strong>Address:</strong> Kathmandu, Akantakuna</p>
                 </div>
             </div>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/mahendra-dhakal-42b67a327?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
-                    target="_blank">LinkedIn</a>
-                <a href="https://github.com/mahendra-dhakal" target="_blank">GitHub</a>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">🚀 Journey</h3>
+                    <p class="card-subtitle">From Blueprints to Code</p>
+                </div>
+                <div class="card-content">
+                    <p>
+                        My transition from civil engineering to software development represents my passion for innovation 
+                        and continuous learning. I'm fascinated by how technology can solve real-world problems and 
+                        improve people's lives through elegant digital solutions.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">🎯 Vision</h3>
+                    <p class="card-subtitle">Building the Future</p>
+                </div>
+                <div class="card-content">
+                    <p>
+                        Based in Kathmandu, Akantakuna, I'm committed to contributing to impactful projects 
+                        and collaborating with forward-thinking teams. My goal is to bridge traditional engineering 
+                        principles with modern software development practices.
+                    </p>
+                </div>
             </div>
         </div>
-        <p class="copyright">&copy; 2025 Mahendra Dhakal</p>
+    </section>
+
+    <!-- Skills Section - Horizontal Card Layout -->
+    <section class="section" id="skills">
+        <h2 class="section-title">Technical Arsenal</h2>
+        
+        <!-- Skills Navigation -->
+        <div class="skills-nav">
+            <button class="skill-nav-btn active" data-category="all">All Skills</button>
+            <button class="skill-nav-btn" data-category="programming">Languages</button>
+            <button class="skill-nav-btn" data-category="framework">Frameworks</button>
+            <button class="skill-nav-btn" data-category="ai_ml">AI/ML</button>
+            <button class="skill-nav-btn" data-category="database">Databases</button>
+            <button class="skill-nav-btn" data-category="devops">DevOps</button>
+            <button class="skill-nav-btn" data-category="tools">Tools</button>
+        </div>
+        
+        <!-- Skills Container -->
+        <div class="skills-flipbook-container">
+            <div class="skills-horizontal-scroll" id="skills-container">
+                {% for skill in skills %}
+                <div class="skill-flipcard" data-category="{{ skill.category }}">
+                    <div class="skill-flipcard-inner">
+                        <!-- Front of card -->
+                        <div class="skill-flipcard-front">
+                            <div class="skill-logo">
+                                {% if skill.name == 'Python' %}🐍
+                                {% elif skill.name == 'JavaScript' %}⚡
+                                {% elif skill.name == 'HTML/CSS' %}🎨
+                                {% elif skill.name == 'Django' %}<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" />
+                                {% elif skill.name == 'FastAPI' %}⚡
+                                {% elif skill.name == 'LangChain' %}🔗
+                                {% elif skill.name == 'LangGraph' %}📊
+                                {% elif skill.name == 'LangSmith' %}🔍
+                                {% elif skill.name == 'PostgreSQL' %}<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" />
+                                {% elif skill.name == 'Redis' %}<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis" />
+                                {% elif skill.name == 'Docker' %}<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" />
+                                {% elif skill.name == 'AWS' %}<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="AWS" />
+                                {% elif skill.name == 'Nginx' %}<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" alt="Nginx" />
+                                {% elif skill.name == 'Git/GitHub' %}<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+                                {% elif skill.name == 'Postman' %}📮
+                                {% elif skill.name == 'Celery' %}🌿
+                                {% else %}💻{% endif %}
+                            </div>
+                            <div class="skill-name">{{ skill.name }}</div>
+                        </div>
+                        <!-- Back of card -->
+                        <div class="skill-flipcard-back">
+                            <div class="skill-proficiency">{{ skill.proficiency }}%</div>
+                            <div class="skill-category-badge">{{ skill.get_category_display }}</div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="skill-flipcard">
+                    <div class="skill-flipcard-inner">
+                        <div class="skill-flipcard-front">
+                            <div class="skill-logo">🚀</div>
+                            <div class="skill-name">Skills Loading...</div>
+                        </div>
+                        <div class="skill-flipcard-back">
+                            <div class="skill-proficiency">100%</div>
+                            <div class="skill-category-badge">Coming Soon</div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- Scroll Indicators -->
+        <div class="skills-scroll-indicators">
+            <button class="scroll-btn scroll-left" id="scroll-left">‹</button>
+            <button class="scroll-btn scroll-right" id="scroll-right">›</button>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-container">
+            {% for project in projects %}
+            <article class="project-item">
+                <div class="project-content">
+                    <h3>
+                        {% if project.demo_url %}
+                            <a href="{{ project.demo_url }}" target="_blank" rel="noopener noreferrer">
+                                {{ project.title }}
+                            </a>
+                        {% elif project.github_url %}
+                            <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer">
+                                {{ project.title }}
+                            </a>
+                        {% else %}
+                            {{ project.title }}
+                        {% endif %}
+                    </h3>
+                    {% if project.subtitle %}
+                        <p class="project-subtitle">{{ project.subtitle }}</p>
+                    {% endif %}
+                    <p>{{ project.short_description }}</p>
+                    
+                    <div class="project-tech">
+                        {% for tech in project.get_tech_list %}
+                            <span class="tech-tag">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="project-links" style="margin-top: 15px;">
+                        {% if project.demo_url %}
+                            <a href="{{ project.demo_url }}" target="_blank" rel="noopener noreferrer" class="project-link">
+                                🌐 Live Demo
+                            </a>
+                        {% endif %}
+                        {% if project.github_url %}
+                            <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" class="project-link">
+                                💻 GitHub
+                            </a>
+                        {% endif %}
+                        {% if project.case_study_url %}
+                            <a href="{{ project.case_study_url }}" target="_blank" rel="noopener noreferrer" class="project-link">
+                                📖 Case Study
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="project-visual">
+                    {% if project.image %}
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    {% else %}
+                        <div class="project-preview"></div>
+                    {% endif %}
+                </div>
+            </article>
+            {% empty %}
+            <article class="project-item">
+                <div class="project-content">
+                    <h3>🚀 Projects Coming Soon</h3>
+                    <p>
+                        I'm currently updating my project showcase with detailed case studies and live demos. 
+                        Check back soon to see my latest work in web development, automation, and innovative solutions!
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Coming Soon</span>
+                    </div>
+                </div>
+                <div class="project-visual">
+                    <div class="project-preview"></div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="section" id="blog">
+        <h2 class="section-title">Latest Insights</h2>
+        <div class="cards-container">
+            {% if recent_posts %}
+                {% for post in recent_posts %}
+                <article class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <a href="{% url 'blog_detail' post.id %}">{{ post.title }}</a>
+                        </h3>
+                        <p class="card-subtitle">
+                            Published on {{ post.created_on|date:"F d, Y" }} by {{ post.author }}
+                        </p>
+                    </div>
+                    <div class="card-content">
+                        <p>{{ post.content|truncatewords:25 }}</p>
+                        <a href="{% url 'blog_detail' post.id %}" class="read-more-link">
+                            Read Full Article →
+                        </a>
+                    </div>
+                </article>
+                {% endfor %}
+            {% else %}
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">🚀 Coming Soon</h3>
+                        <p class="card-subtitle">Exciting Content in Development</p>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            I'm working on some exciting blog posts about web development, 
+                            engineering insights, and technology trends. Stay tuned for 
+                            compelling content that bridges engineering and software development!
+                        </p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        
+        {% if recent_posts %}
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="{% url 'blog-list' %}" class="cta-button">
+                <span>View All Posts</span>
+                <span>→</span>
+            </a>
+        </div>
+        {% endif %}
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <h2 class="section-title">Let's Connect</h2>
+        
+        <!-- Contact Form -->
+        <div class="contact-form-container">
+            <div class="contact-intro">
+                <h3>Ready to Build Something Amazing?</h3>
+                <p>I'm always excited to discuss new opportunities, collaborate on innovative projects, 
+                or simply connect with fellow developers and engineers. Drop me a message!</p>
+            </div>
+
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <form method="post" class="contact-form" id="contact-form">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group">
+                        {{ contact_form.name }}
+                        {% if contact_form.name.errors %}
+                            <div class="form-error">{{ contact_form.name.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ contact_form.email }}
+                        {% if contact_form.email.errors %}
+                            <div class="form-error">{{ contact_form.email.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        {{ contact_form.phone }}
+                        {% if contact_form.phone.errors %}
+                            <div class="form-error">{{ contact_form.phone.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ contact_form.company }}
+                        {% if contact_form.company.errors %}
+                            <div class="form-error">{{ contact_form.company.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="form-group full-width">
+                    {{ contact_form.subject }}
+                    {% if contact_form.subject.errors %}
+                        <div class="form-error">{{ contact_form.subject.errors.0 }}</div>
+                    {% endif %}
+                </div>
+                
+                <div class="form-group full-width">
+                    {{ contact_form.message }}
+                    {% if contact_form.message.errors %}
+                        <div class="form-error">{{ contact_form.message.errors.0 }}</div>
+                    {% endif %}
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <span>Send Message</span>
+                    <span>✨</span>
+                </button>
+            </form>
+        </div>
+        
+        <!-- Contact Links -->
+        <div class="contact-container">            
+            <div class="contact-links">
+                <a href="mailto:mahendradhakal700@gmail.com" class="contact-link" aria-label="Send me an email">
+                    <span>📧</span>
+                    <span>mahendradhakal700@gmail.com</span>
+                </a>
+                <a href="tel:+9779806714549" class="contact-link" aria-label="Call me">
+                    <span>📱</span>
+                    <span>+977-9806714549</span>
+                </a>
+                <a href="https://www.linkedin.com/in/mahendra-dhakal-42b67a327" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="contact-link"
+                   aria-label="Connect with me on LinkedIn">
+                    <span>💼</span>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/mahendra-dhakal" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="contact-link"
+                   aria-label="Check out my GitHub profile">
+                    <span>💻</span>
+                    <span>GitHub</span>
+                </a>
+            </div>
+            
+            <div style="margin-top: 3rem; font-size: 1rem; color: var(--text-secondary);">
+                <p><strong>Location:</strong> Kathmandu, Akantakuna, Nepal</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-text">
+            <p>&copy; 2025 Mahendra Dhakal. Crafted with passion and cutting-edge technology.</p>
+        </div>
     </footer>
+
+    <!-- JavaScript for Advanced Interactions -->
     <script>
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+        // Advanced cursor system
+        const cursor = document.querySelector('.cursor');
+        const cursorTrails = [];
+        let mouseX = 0, mouseY = 0;
+        
+        // Custom cursor movement
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            cursor.style.left = mouseX + 'px';
+            cursor.style.top = mouseY + 'px';
+            
+            // Create trail effect
+            createCursorTrail(mouseX, mouseY);
         });
+        
+        function createCursorTrail(x, y) {
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            trail.style.left = x + 'px';
+            trail.style.top = y + 'px';
+            document.body.appendChild(trail);
+            
+            setTimeout(() => {
+                document.body.removeChild(trail);
+            }, 1000);
+        }
+        
+        // Magnetic cursor effect for interactive elements
+        const magneticElements = document.querySelectorAll('.nav-link, .cta-button, .contact-link');
+        
+        magneticElements.forEach(element => {
+            element.addEventListener('mousemove', (e) => {
+                const rect = element.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                element.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.05)`;
+                cursor.style.transform = 'scale(2)';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                element.style.transform = '';
+                cursor.style.transform = '';
+            });
+        });
+        
+        // Dynamic particle system
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles-js');
+            const particleCount = window.innerWidth < 768 ? 30 : 60;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                
+                // Random colors from our palette
+                const colors = ['#00ffff', '#ff006e', '#8b5cf6', '#ffd700'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    
+                    // Animate skill cards
+                    if (entry.target.classList.contains('skill-card')) {
+                        entry.target.style.animationDelay = `${Math.random() * 0.5}s`;
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all animatable elements
+        document.querySelectorAll('.card, .skill-flipcard, .project-item').forEach(item => {
+            observer.observe(item);
+        });
+        
+        // Hero title 3D tilt effect
+        const heroTitle = document.getElementById('hero-title');
+        
+        document.addEventListener('mousemove', (e) => {
+            if (heroTitle) {
+                const rect = heroTitle.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                const angleX = (e.clientY - centerY) / 50;
+                const angleY = (centerX - e.clientX) / 50;
+                
+                heroTitle.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+            }
+        });
+        
+        // Mobile navigation toggle
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Smooth scroll with offset for fixed nav
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 100;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Enhanced typewriter effect
+        const typewriterText = document.getElementById('typewriter');
+        const texts = [
+            'Civil Engineer → Future Developer',
+            'Problem Solver → Solution Creator',
+            'Structure Builder → Code Architect',
+            'Innovation Enthusiast → Tech Pioneer'
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function typewriterEffect() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typewriterText.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterText.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            let typeSpeed = isDeleting ? 50 : 100;
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                typeSpeed = 500;
+            }
+            
+            setTimeout(typewriterEffect, typeSpeed);
+        }
+        
+        // Performance optimization - only animate when visible
+        let isPageVisible = true;
+        
+        document.addEventListener('visibilitychange', () => {
+            isPageVisible = !document.hidden;
+        });
+        
+        // Skills Navigation and Scrolling with Auto-slide
+        function initializeSkillsInteraction() {
+            const navButtons = document.querySelectorAll('.skill-nav-btn');
+            const skillCards = document.querySelectorAll('.skill-flipcard');
+            const skillsContainer = document.getElementById('skills-container');
+            const scrollLeftBtn = document.getElementById('scroll-left');
+            const scrollRightBtn = document.getElementById('scroll-right');
+            
+            let autoSlideInterval;
+            let isUserInteracting = false;
+
+            // Navigation filtering
+            navButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active button
+                    navButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    const category = button.dataset.category;
+                    
+                    // Filter cards
+                    skillCards.forEach(card => {
+                        if (category === 'all' || card.dataset.category === category) {
+                            card.style.display = 'block';
+                            card.style.animation = 'fadeInScale 0.5s ease-out forwards';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    
+                    // Reset scroll position when filtering
+                    if (skillsContainer) {
+                        skillsContainer.scrollTo({ left: 0, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Smooth continuous sliding functionality
+            function startSmoothSlide() {
+                if (!skillsContainer) return;
+                
+                let scrollSpeed = 1; // pixels per frame
+                
+                function smoothSlide() {
+                    if (skillsContainer) {
+                        const maxScroll = skillsContainer.scrollWidth - skillsContainer.clientWidth;
+                        const currentScroll = skillsContainer.scrollLeft;
+                        
+                        if (currentScroll >= maxScroll) {
+                            // Seamlessly reset to beginning
+                            skillsContainer.scrollLeft = 0;
+                        } else {
+                            // Continuous smooth scroll
+                            skillsContainer.scrollLeft += scrollSpeed;
+                        }
+                        
+                        requestAnimationFrame(smoothSlide);
+                    }
+                }
+                
+                // Start the smooth sliding animation
+                requestAnimationFrame(smoothSlide);
+            }
+
+            function stopAutoSlide() {
+                if (autoSlideInterval) {
+                    clearInterval(autoSlideInterval);
+                }
+            }
+
+            // Start smooth continuous sliding when page loads
+            setTimeout(() => {
+                startSmoothSlide();
+            }, 1000); // Start after 1 second
+        }
+
+        // Initialize effects
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            setTimeout(typewriterEffect, 3000);
+            initializeSkillsInteraction();
+            
+            // Add staggered animation delays
+            document.querySelectorAll('.card').forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+            
+            // Add staggered animation for skill cards
+            document.querySelectorAll('.skill-flipcard').forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.05}s`;
+            });
+        });
+        
+        // Accessibility: Respect user preferences
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        
+        if (prefersReducedMotion.matches) {
+            document.body.classList.add('reduced-motion');
+            cursor.style.display = 'none';
+        }
+        
+        // Performance: Debounce scroll events
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (scrollTimeout) {
+                clearTimeout(scrollTimeout);
+            }
+            scrollTimeout = setTimeout(() => {
+                // Add scroll-based effects here if needed
+            }, 10);
+        });
+        
+        // Error handling for failed resources
+        window.addEventListener('error', (e) => {
+            console.warn('Resource failed to load:', e.target.src);
+        });
+        
+        // Progressive enhancement
+        if ('IntersectionObserver' in window) {
+            // Enhanced scroll animations already implemented above
+        } else {
+            // Fallback for older browsers
+            document.querySelectorAll('.card').forEach(card => {
+                card.classList.add('in-view');
+            });
+        }
+    </script>
+    
+    <!-- Service Worker Registration for PWA capabilities -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // Service worker registration would go here in a production environment
+            });
+        }
     </script>
 </body>
-
 </html>

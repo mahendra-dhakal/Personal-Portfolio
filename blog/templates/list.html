@@ -1,70 +1,136 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Mahendra Dhakal</title>
-    {% load static %}
+    <title>Blog Posts - Mahendra Dhakal</title>
+    <meta name="description" content="Read the latest insights and articles by Mahendra Dhakal on web development, engineering, and technology.">
+    
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta name="theme-color" content="#00ffff">
 </head>
-
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">Mahendra Dhakal</div>
-            <ul class="nav-links">
-                <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'index' %}#education">Education</a></li>
-                <li><a href="{% url 'index' %}#skills">Skills</a></li>
-                <li><a href="{% url 'index' %}#projects">Projects</a></li>
-                <li><a href="{% url 'index' %}#contact">Contact</a></li>
-                <li><a href="{% url 'index' %}#recent-blogs">Blog</a></li>
+    <!-- Custom Cursor -->
+    <div class="cursor" aria-hidden="true"></div>
+    
+    <!-- Dynamic Background System -->
+    <div class="bg-canvas" aria-hidden="true"></div>
+    <div class="bg-gradient" aria-hidden="true"></div>
+    <div class="particles" aria-hidden="true" id="particles-js"></div>
+
+    <!-- Glassmorphism Navigation -->
+    <div class="nav-container">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="logo" role="img" aria-label="Mahendra Dhakal Logo">
+                Mahendra Dhakal
+            </div>
+            <ul class="nav-menu">
+                <li><a href="{% url 'index' %}" class="nav-link">Home</a></li>
+                <li><a href="{% url 'index' %}#about" class="nav-link">About</a></li>
+                <li><a href="{% url 'index' %}#skills" class="nav-link">Skills</a></li>
+                <li><a href="{% url 'index' %}#projects" class="nav-link">Projects</a></li>
+                <li><a href="{% url 'blog-list' %}" class="nav-link">Blog</a></li>
+                <li><a href="{% url 'index' %}#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="menu-toggle">☰</div>
+            <div class="menu-toggle" id="mobile-menu" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
-    </header>
-    <section class="card">
-        <h2>Blog Posts</h2>
-        {% for post in posts %}
-        <div class="project">
-            <h3><a href="{% url 'blog_detail' post.id %}">{{ post.title }}</a></h3>
-            <p>Published on {{ post.created_on|date:"F d, Y" }} by {{ post.author }}</p>
-            <p>{{ post.content|truncatewords:30 }}</p>
-            <a href="{% url 'blog_detail' post.id %}" style="color:#61dafb;">Read More</a>
-        </div>
-        {% empty %}
-        <p>No blog posts available.</p>
-        {% endfor %}
-    </section>
-    <footer id="contact">
-        <div class="footer-content">
-            <h2>Contact Details</h2>
-            <div class="footer-contact-row">
-                <div>
-                    <p><strong>Name:</strong> Mahendra Dhakal</p>
-                    <p><strong>Contact No.:</strong> +977-9806714549</p>
+    </div>
+
+    <!-- Blog Content -->
+    <div class="page-content">
+        <section class="section" style="padding-top: 140px;">
+            <h1 class="section-title">Latest Insights</h1>
+            
+            <div class="cards-container">
+                {% for post in posts %}
+                <article class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <a href="{% url 'blog_detail' post.id %}">{{ post.title }}</a>
+                        </h3>
+                        <p class="card-subtitle">
+                            Published on {{ post.created_on|date:"F d, Y" }} by {{ post.author }}
+                        </p>
+                    </div>
+                    <div class="card-content">
+                        <p>{{ post.content|truncatewords:25 }}</p>
+                        <a href="{% url 'blog_detail' post.id %}" class="read-more-link">
+                            Read Full Article →
+                        </a>
+                    </div>
+                </article>
+                {% empty %}
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">🚀 Coming Soon</h3>
+                        <p class="card-subtitle">Exciting Content in Development</p>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            I'm working on some exciting blog posts about web development, 
+                            engineering insights, and technology trends. Stay tuned for 
+                            compelling content that bridges engineering and software development!
+                        </p>
+                        <a href="{% url 'index' %}" class="read-more-link">
+                            Back to Homepage →
+                        </a>
+                    </div>
                 </div>
-                <div>
-                    <p><strong>Email:</strong> <a
-                            href="mailto:mahendradhakal700@gmail.com">mahendradhakal700@gmail.com</a>
-                    </p>
-                    <p><strong>Address:</strong> Kathmandu, Akantakuna</p>
-                </div>
+                {% endfor %}
             </div>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/mahendra-dhakal-42b67a327?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
-                    target="_blank">LinkedIn</a>
-                <a href="https://github.com/mahendra-dhakal" target="_blank">GitHub</a>
-            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-text">
+            <p>&copy; 2025 Mahendra Dhakal. Crafted with passion and cutting-edge technology.</p>
         </div>
-        <p class="copyright">&copy; 2025 Mahendra Dhakal</p>
     </footer>
+
+    <!-- JavaScript for Advanced Interactions -->
     <script>
-        document.querySelector('.menu-toggle').addEventListener('click', () => {
-            document.querySelector('.nav-links').classList.toggle('active');
+        // Mobile navigation toggle
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+        }
+
+        // Basic particle system
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles-js');
+            if (!particlesContainer) return;
+            
+            const particleCount = window.innerWidth < 768 ? 20 : 40;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                
+                const colors = ['#00ffff', '#ff006e', '#8b5cf6', '#ffd700'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
         });
     </script>
 </body>
-
 </html>

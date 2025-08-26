@@ -1,56 +1,122 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ post.title }} - Mahendra Dhakal</title>
-    {% load static %}
+    <meta name="description" content="{{ post.content|truncatewords:25 }}">
+    
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta name="theme-color" content="#00ffff">
 </head>
-
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">Mahendra Dhakal</div>
-            <ul class="nav-links">
-                <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'index' %}#education">Education</a></li>
-                <li><a href="{% url 'index' %}#skills">Skills</a></li>
-                <li><a href="{% url 'index' %}#projects">Projects</a></li>
-                <li><a href="{% url 'index' %}#recent-blogs">Blog</a></li>
-                <li><a href="{% url 'index' %}#contact">Contact</a></li>
-            </ul>
-            <div class="menu-toggle">☰</div>
-        </nav>
-    </header>
-    <section class="card">
-        <h2>{{ post.title }}</h2>
-        <p>Published on {{ post.created_on|date:"F d, Y" }} by {{ post.author }}</p>
-        <div>{{ post.content|linebreaks }}</div>
-        <a href="{% url 'blog-list' %}">Back to Blog</a>
-    </section>
-    <footer>
-        <div class="footer-content">
-            <h2>Contact Details</h2>
-            <p>Name: Mahendra Dhakal</p>
-            <p>Contact No.: +977-9806714549</p>
-            <p>Email: <a href="mailto:mahendradhakal700@gmail.com">mahendradhakal700@gmail.com</a></p>
-            <p>Address: Kathmandu, Akantakuna</p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/mahendra-dhakal-42b67a327" target="_blank">LinkedIn</a>
-                <a href="https://github.com/mahendra-dhakal" target="_blank">GitHub</a>
+    <!-- Custom Cursor -->
+    <div class="cursor" aria-hidden="true"></div>
+    
+    <!-- Dynamic Background System -->
+    <div class="bg-canvas" aria-hidden="true"></div>
+    <div class="bg-gradient" aria-hidden="true"></div>
+    <div class="particles" aria-hidden="true" id="particles-js"></div>
+
+    <!-- Glassmorphism Navigation -->
+    <div class="nav-container">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="logo" role="img" aria-label="Mahendra Dhakal Logo">
+                Mahendra Dhakal
             </div>
-        </div>
-        <div class="copyright">
-            © 2025 Mahendra Dhakal
+            <ul class="nav-menu">
+                <li><a href="{% url 'index' %}" class="nav-link">Home</a></li>
+                <li><a href="{% url 'index' %}#about" class="nav-link">About</a></li>
+                <li><a href="{% url 'index' %}#skills" class="nav-link">Skills</a></li>
+                <li><a href="{% url 'index' %}#projects" class="nav-link">Projects</a></li>
+                <li><a href="{% url 'blog-list' %}" class="nav-link">Blog</a></li>
+                <li><a href="{% url 'index' %}#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Blog Post Content -->
+    <div class="page-content">
+        <section class="section" style="padding-top: 140px;">
+            <div class="blog-post-container">
+                <article class="blog-post">
+                    <header class="blog-header">
+                        <h1 class="blog-title">{{ post.title }}</h1>
+                        <div class="blog-meta">
+                            <time datetime="{{ post.created_on|date:'c' }}">
+                                Published on {{ post.created_on|date:"F d, Y" }}
+                            </time>
+                            <span class="author">by {{ post.author }}</span>
+                        </div>
+                    </header>
+                    
+                    <div class="blog-content">
+                        {{ post.content|linebreaks }}
+                    </div>
+                    
+                    <footer class="blog-footer">
+                        <div class="blog-navigation">
+                            <a href="{% url 'blog-list' %}" class="back-link">
+                                ← Back to All Posts
+                            </a>
+                        </div>
+                    </footer>
+                </article>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-text">
+            <p>&copy; 2025 Mahendra Dhakal. Crafted with passion and cutting-edge technology.</p>
         </div>
     </footer>
+
+    <!-- JavaScript for Advanced Interactions -->
     <script>
-        document.querySelector('.menu-toggle').addEventListener('click', () => {
-            document.querySelector('.nav-links').classList.toggle('active');
+        // Mobile navigation toggle
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+        }
+
+        // Basic particle system
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles-js');
+            if (!particlesContainer) return;
+            
+            const particleCount = window.innerWidth < 768 ? 20 : 40;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                
+                const colors = ['#00ffff', '#ff006e', '#8b5cf6', '#ffd700'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
         });
     </script>
 </body>
-
 </html>
